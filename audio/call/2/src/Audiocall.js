@@ -8,7 +8,12 @@ import Timer from "./components/hook/Timer";
 import { Bell, Ringing } from "./components/media/Ringing";
 import CallingSpinner from "./style/CallingSpinner";
 
-const omnitalk = new Omnitalk("SDD7-XBI3-XGC8-NICT", "iffHVaXGUrUiIWl");
+// SERVICE ID for WEB
+// SERVICE ID, SERVICE KEY for APP
+const omnitalk = new Omnitalk(
+  "SERVICE ID를 입력하세요",
+  "SERVICE KEY를 입력하세요"
+);
 
 export default function AudioCall() {
   const [sessionId, setSessionId] = useState(""); // createSession();
