@@ -1,0 +1,93 @@
+
+:root {
+    --color-bk: #000;
+    --color-dg: #333;
+    --color-gray: #666;
+    --color-lg: #e8e8e8;
+    --color-wh: #fff;
+    --color-main: #ea5f31;
+    --font-large: 2.75rem;
+    --font-medium: 1.5rem;
+    --font-regular: 1.125rem;
+    --font-small: 1rem;
+    --font-micro: 0.875rem;
+    --base-space: 0.75rem;
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+    --weight-light: 300;
+  }
+  
+  body {
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    font-family:'Pretendard Variable', 'Pretendard','Noto Sans', 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  
+  a {
+    list-style: none;
+    text-decoration: none;
+    font-size: var(--font-regular);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-bk);
+  }
+  
+  h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    margin: 16px 0;
+  }
+  h2 {
+    font-weight: var(--weight-semi-bold);
+    margin: 16px 0;
+  }
+  h3 {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-regular);
+    margin: 16px 0;
+  }
+  p {
+    font-size: var(--font-small);
+    margin: 16px 0;
+    color: var(--color-dg);
+    text-align: justify;
+  }
+  
+  ul, ol, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  dl, dt, dd {
+    padding: 0;
+    margin: 0;
+  }
+  
+  section {
+    max-width: 1200px;
+    min-height: 100%;
+    margin: 0 auto;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width:1200px) and (min-width:230px) {
+    section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  }
