@@ -1,8 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow: /backend/
-Disallow: /data/
-Disallow: /js/
-Disallow: /media/
-
-Sitemap: https://omnitalk.io/sitemap.xml
