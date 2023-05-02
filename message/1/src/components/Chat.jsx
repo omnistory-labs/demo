@@ -14,7 +14,13 @@ import {
   palette,
 } from "../style";
 
-const omnitalk = new Omnitalk("YN3F-GA3M-4CW2-FDLZ");
+// SERVICE ID for WEB
+// SERVICE ID, SERVICE KEY for APP
+const omnitalk = new Omnitalk(
+  "SERVICE ID를 입력하세요",
+  "SERVICE KEY를 입력하세요"
+);
+
 function Chat() {
   const [session, setSession] = useState({});
   const [roomTitle, setRoomTitle] = useState("");
@@ -27,7 +33,7 @@ function Chat() {
 
   const [publishToggle, setPublishToggle] = useState(false);
   const [roomName, setRoomName] = useState(null);
-  omnitalk.onmessage = async e => {
+  omnitalk.onmessage = async (e) => {
     console.log(`Event Message : ${JSON.stringify(e)}`); // 이벤트 발생시마다 확인되는 onmessage
     switch (e.cmd) {
       case "SESSION_EVENT":
@@ -35,7 +41,7 @@ function Chat() {
         setSession(e.session);
         setUserID(e.user_id);
 
-        await omnitalk.roomList("dataroom").then(res => {
+        await omnitalk.roomList("dataroom").then((res) => {
           console.log("session=>roomList", res);
           setRoomList(res);
         });
@@ -63,7 +69,7 @@ function Chat() {
     await omnitalk.createRoom("dataroom", roomTitle, roomPw);
     if (roomTitle !== undefined) {
       if (roomList !== undefined) {
-        await omnitalk.roomList("dataroom").then(res => {
+        await omnitalk.roomList("dataroom").then((res) => {
           setRoomList(res);
           console.log("dataroom", res);
         });
@@ -92,14 +98,14 @@ function Chat() {
             type="text"
             placeholder="Room Title"
             value={roomTitle}
-            onChange={e => setRoomTitle(e.target.value)}
+            onChange={(e) => setRoomTitle(e.target.value)}
           />
           <div className="btn-wrap">
             <input
               type="password"
               placeholder="secret"
               value={roomPw}
-              onChange={e => setRoomPw(e.target.value)}
+              onChange={(e) => setRoomPw(e.target.value)}
             />
             <button
               type="button"
@@ -141,9 +147,9 @@ function Chat() {
                         value={password[i]}
                         placeholder="password"
                         ref={pwValue}
-                        onChange={ev => {
+                        onChange={(ev) => {
                           const value = ev.target.value; // 각 룸의 패스워드 인풋 값
-                          setPassword(prevState =>
+                          setPassword((prevState) =>
                             prevState.map((pw, index) => {
                               return index === i ? value : pw;
                             })
@@ -153,7 +159,7 @@ function Chat() {
                       <div>{password[i]}</div>
                       <button
                         type="button"
-                        onClick={async ev => {
+                        onClick={async (ev) => {
                           ev.preventDefault();
                           if (room.password === password[i]) {
                             setPublishToggle(true);
