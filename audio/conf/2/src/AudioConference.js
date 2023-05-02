@@ -10,7 +10,6 @@ import {
   StyledRoomCard,
   StyledWrap,
 } from "./style/style";
-
 // SERVICE ID for WEB
 // SERVICE ID, SERVICE KEY for APP
 const omnitalk = new Omnitalk(
@@ -52,9 +51,7 @@ export default function AudioConference() {
       case "BROADCASTING_EVENT":
         console.log("caller", e.caller); // === user_id
         setPartilist(await omnitalk.partiList());
-        await omnitalk.getDeviceList().then((device) => {
-          setAudioinput(device.audioinput);
-        });
+
         break;
       case "LEAVE_EVENT":
         console.log("leave");
@@ -99,6 +96,7 @@ export default function AudioConference() {
 
   const handleAudioDevice = async (e) => {
     await omnitalk.setAudioDevice(e.target.value);
+    console.log(e.target.value);
     setAudioinputSelect(e.target.value);
   };
 
@@ -108,6 +106,9 @@ export default function AudioConference() {
     }
     createSession();
   }, []);
+  useEffect(() => {
+    console.log("partilist render", partilist);
+  }, [partilist]);
 
   return (
     <>
@@ -183,7 +184,14 @@ export default function AudioConference() {
                             room.room_id,
                             pwValue.current.value
                           );
+                          await omnitalk.getDeviceList().then((device) => {
+                            setAudioinput(device.audioinput);
+                          });
                           await omnitalk.publish("audiocall", false);
+                          await omnitalk.partiList(room.room_id).then((res) => {
+                            setPartilist(res);
+                            console.log("join partilist", res);
+                          });
                           setBroadcastingToggle(true);
                           setPartiTitle(room.subject);
                         }
