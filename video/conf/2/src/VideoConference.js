@@ -32,6 +32,7 @@ export default function VideoConference() {
   const [partilist, setPartilist] = useState([]);
 
   // ui
+  // const [cameraToggle, setCameraToggle] = useState(false);
   const [videoinput, setVideoinput] = useState([]);
   const [videoSelect, setVideoSelect] = useState(0);
   const [publishToggle, setPublishToggle] = useState(false);
@@ -67,6 +68,12 @@ export default function VideoConference() {
         break;
       case "ERROR":
         console.log("error");
+        if (e.reason === "4202, ERR_INVALID_SECRET") {
+          alert("비밀번호를 확인하세요!");
+          await omnitalk.leave(session);
+          window.location.reload();
+        }
+        break;
         break;
 
       default:
@@ -105,7 +112,6 @@ export default function VideoConference() {
   };
 
   useEffect(() => {
-    console.log("creact session");
     async function createSession() {
       await omnitalk.createSession();
     }
