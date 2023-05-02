@@ -1,6 +1,5 @@
 import Omnitalk from "omnitalk-npm-sdk";
 import { useState } from "react";
-import styled from "styled-components";
 import { StyledAudioCallForm, StyledAudioCall } from "./style/style";
 import CallStep1 from "./components/CallStep1";
 import CallStep2 from "./components/CallStep2";
@@ -8,12 +7,7 @@ import Timer from "./components/hook/Timer";
 import { Bell, Ringing } from "./components/media/Ringing";
 import CallingSpinner from "./style/CallingSpinner";
 
-// SERVICE ID for WEB
-// SERVICE ID, SERVICE KEY for APP
-const omnitalk = new Omnitalk(
-  "SERVICE ID를 입력하세요",
-  "SERVICE KEY를 입력하세요"
-);
+const omnitalk = new Omnitalk("YN3F-GA3M-4CW2-FDLZ");
 
 export default function AudioCall() {
   const [sessionId, setSessionId] = useState(""); // createSession();
@@ -36,7 +30,7 @@ export default function AudioCall() {
     console.log(`onmessage : ${JSON.stringify(e)}`); // 이벤트 발생시마다 확인되는 onmessage
     switch (e.cmd) {
       case "SESSION_EVENT":
-        console.log(`Create session, ${e.user_id}, ${e.result}`);
+        // console.log(`Create session, ${e.user_id}, ${e.result}`);
         setOfferCallToggle(true);
         setCreateToggle(false);
         // call list
@@ -45,7 +39,7 @@ export default function AudioCall() {
         });
         break;
       case "RINGING_EVENT":
-        console.log("Ringing");
+        // console.log("Ringing");
         setCaller(e.caller);
         setAnswerToggle(true);
         setOfferCallToggle(false);
@@ -61,7 +55,7 @@ export default function AudioCall() {
         }, 1000 * 95);
         break;
       case "CONNECTED_EVENT":
-        console.log("Connected");
+        // console.log("Connected");
         setCallToggle(true);
         setCreateToggle(false);
         setOfferCallToggle(false);
@@ -69,7 +63,7 @@ export default function AudioCall() {
         setRingingToggle(false);
         break;
       case "LEAVE_EVENT":
-        console.log("Disconnected");
+        // console.log("Disconnected");
         omnitalk.leave(sessionId.session);
         window.location.reload(true);
         break;
