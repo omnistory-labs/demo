@@ -4,4 +4,8 @@ import "./style/index.css";
 import AudioCall from "./Audiocall";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AudioCall />);
+root.render(
+  <React.StrictMode>
+    <AudioCall />
+  </React.StrictMode>
+);

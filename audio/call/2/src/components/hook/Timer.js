@@ -8,17 +8,15 @@ export default function Timer() {
 
   useEffect(() => {
     const countdown = setInterval(() => {
-      if (parseInt(seconds, 10) >= 0) {
-        setSeconds(parseInt(seconds, 10) + 1);
-      }
-      if (parseInt(seconds, 10) === 59) {
-        setMinutes(parseInt(minutes, 10) + 1);
-        if (parseInt(minutes, 10) === 59) {
-          clearInterval(countdown);
+      if (seconds < 59) {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      } else {
+        if (minutes < 59) {
+          setMinutes((prevMinutes) => prevMinutes + 1);
         } else {
-          setSeconds(0);
           setMinutes(0);
         }
+        setSeconds(0);
       }
     }, 1000);
     return () => clearInterval(countdown);
@@ -47,6 +45,7 @@ const StyledTimer = styled.div`
   div {
     h2 {
       font-size: ${fontSize.large};
+      color: rgba(255, 255, 255, 0.6);
     }
   }
 `;

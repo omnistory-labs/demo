@@ -128,96 +128,150 @@ export const palette = {
   shadow: "-2px 0 10px rgba(0,0,0,0.08)",
   btnShadow: "3px 2px 2px rgba(0,0,0,0.1)",
 };
-
+export const StyledAudioCall = styled.div`
+  width: 100vw;
+  /* height: 100vh; */
+  background-color: rgba(0, 0, 0, 0.03);
+  .list_container {
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    ${defaultFlexCenter};
+    flex-direction: column;
+    position: relative;
+    .user_id {
+      width: 100%;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      margin-bottom: 10px;
+      font-size: 16px;
+      span {
+        font-size: 14px;
+        color: #666;
+      }
+      .refresh_button {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+    .call_list_wrap {
+      width: 100%;
+      height: 300px;
+      padding: 0 5%;
+      margin-bottom: 30px;
+      overflow: auto;
+      border-radius: 10px;
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      span {
+        ${defaultFlexCenter}
+        font-size: 14px;
+        color: #666;
+      }
+      .state {
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        font-size: 12px;
+        color: #999;
+      }
+    }
+    .bottom {
+      width: 400px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      padding-top: 30px;
+      position: relative;
+      button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        height: 36px;
+        color: ${palette.white};
+        font-size: ${fontSize.small};
+        cursor: pointer;
+        border: 0;
+        border-radius: 5px;
+        background-color: ${palette.main.default};
+        &:disabled {
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 579px) and (min-width: 230px) {
+    .list_container {
+      width: 100%;
+      .user_id {
+        flex-direction: column-reverse;
+        margin-bottom: 10px;
+        font-size: 16px;
+        .refresh_button {
+          display: flex;
+          align-items: center;
+          margin-bottom: 0;
+          border: 0;
+          background-color: rgba(0, 0, 0, 0);
+        }
+      }
+      .call_list_wrap {
+      }
+      .bottom {
+        width: 90%;
+        position: relative;
+        button {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+`;
 export const StyledContents = styled.div`
   width: 100%;
-  .call_form {
-    width: 360px;
-    height: 530px;
-    margin: 0 auto;
-    padding: 40px;
-    border-radius: 15px;
-    background-color: ${palette.white};
-    box-shadow: ${palette.shadow};
-    position: relative;
-    overflow: hidden;
-    h3 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      font-weight: ${fontWeight.medium};
-    }
-    .dot_wrap {
-      margin-bottom: 40px;
-      ${defaultFlexCenter}
-      .dot {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0;
-        border-radius: 100px;
-        background-color: ${palette.gray.bright};
-      }
-      .dot_active {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0;
-        border-radius: 100px;
-        background-color: ${palette.main.default};
-      }
-      .hyphen {
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        margin: 0;
-        background-color: ${palette.gray.bright};
-      }
-      .hyphen_active {
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        margin: 0;
-        background-color: ${palette.main.default};
-      }
-    }
-    label,
-    h4 {
-      display: inline-block;
-      width: 100%;
-      margin: 0;
-      margin-bottom: 20px;
-      text-align: start;
-      font-weight: ${fontWeight.regular};
-      font-size: ${fontSize.regular};
-    }
-    .refresh_button {
-      position: absolute;
-      top: 154px;
-      right: 40px;
-      color: ${palette.text.light};
-      border: 0;
-      background-color: ${palette.opacity};
-      :hover {
-        cursor: pointer;
-        color: #469bf8;
-      }
-    }
+  padding-top: 50px;
+  padding-bottom: 50px;
+  margin-bottom: 20px;
+  border-top: 1px solid ${palette.gray.middle};
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  ${defaultFlexCenter}
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #fff;
+  h2 {
+    text-align: center;
+  }
+  .input_container {
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid lightgray;
     input {
       ${defaultInput}
-      width: 100%;
-      padding-left: 10px;
-      border: 0;
-      background-color: ${palette.gray.boxColor};
+      width: 400px;
+      margin: 0 auto;
+      margin-bottom: 20px;
       ::placeholder {
         font-size: ${fontSize.micro};
       }
     }
     p {
+      width: 400px;
+      margin: 0 auto;
+      margin-bottom: 80px;
       padding-left: 14px;
       position: relative;
       color: ${palette.text.default};
       text-align: start;
+      font-size: 14px;
       span {
         position: absolute;
         top: 0;
@@ -226,69 +280,24 @@ export const StyledContents = styled.div`
         color: ${palette.main.default};
       }
     }
-    .call_list_container {
-      width: 100%;
-      max-height: 260px;
-      overflow: auto;
-      background-color: ${palette.white};
-      border-radius: 5px;
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      .call_list_btn {
-        height: 46px;
-        button {
-          display: inline-block;
-          width: 100%;
-          padding: 0 5%;
-          border: 0;
-          background-color: ${palette.opacity};
-          color: ${palette.text.default};
-          strong {
-            ${defaultFlexCenter}
-            justify-content: space-between;
-            span {
-              padding-top: 6px;
-              font-weight: ${fontWeight.regular};
-              font-size: ${fontSize.small};
-              line-height: 24px;
-              color: ${palette.text.default};
-            }
-            span:nth-child(2) {
-              font-size: ${fontSize.micro};
-            }
-          }
-          .border_bottom {
-            display: inline-block;
-            width: 90%;
-            height: 1px;
-            background-color: ${palette.gray.bright};
-          }
-        }
-        .disabled_btn {
-          color: ${palette.text.disabled};
-          strong {
-            span {
-              color: ${palette.text.disabled};
-            }
-          }
-        }
-      }
-      .call_list_btn:first-child {
-        padding-top: 6px;
-        background-color: ${palette.gray.bright};
-        strong {
-          span {
-            color: ${palette.text.light};
-          }
-        }
-        .border_bottom {
-          display: none;
-        }
-      }
-      .call_list_btn:last-child {
-        .border_bottom {
-          display: none;
+    .bottom {
+      width: 400px;
+      margin: 0 auto;
+      position: relative;
+      button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100px;
+        height: 36px;
+        color: ${palette.white};
+        font-size: ${fontSize.small};
+        cursor: pointer;
+        border: 0;
+        border-radius: 5px;
+        background-color: ${palette.main.default};
+        &:disabled {
+          background-color: #ccc;
         }
       }
     }
@@ -296,364 +305,107 @@ export const StyledContents = styled.div`
 
   @media screen and (max-width: 579px) and (min-width: 230px) {
     width: 100%;
-    .call_form {
-      width: 100%;
-      padding: 30px;
-      label,
-      h4 {
-        font-size: 1.1rem;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 30px;
+    .input_container {
+      input {
+        width: 100%;
+        height: 36px;
       }
       p {
-        padding-left: 14px;
-        position: relative;
-        color: ${palette.text.default};
-        text-align: start;
-        span {
-          position: absolute;
-          top: 0;
-          left: 0;
-          font-size: ${fontSize.medium};
-          color: ${palette.main.default};
+        width: 100%;
+        margin-bottom: 60px;
+      }
+      .bottom {
+        width: 100%;
+        button {
+          font-size: 0.9rem;
         }
       }
     }
   }
 `;
 
-export const StyledCallForm = styled.div`
+export const StyledListBtn = styled.button`
   width: 100%;
-  .call_form {
-    width: 360px;
-    height: 530px;
-    margin: 0 auto;
-    padding: 40px;
-    border-radius: 15px;
-    background-color: ${palette.white};
-    box-shadow: ${palette.shadow};
-    position: relative;
-    overflow: hidden;
-    h3 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      font-weight: ${fontWeight.medium};
+  height: 42px;
+  padding: 0 5%;
+  margin-bottom: 6px;
+  ${defaultFlexCenter}
+  border: 0;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 4px 0px;
+  position: relative;
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  :hover {
+    cursor: pointer;
+    color: #222;
+    font-weight: 500;
+    border: 1px solid ${palette.main.disabled};
+    background-color: #fff;
+  }
+  &:disabled {
+    background-color: rgba(0, 0, 0, 0.06);
+    p {
+      color: #999;
     }
-    .refresh_button {
-      position: absolute;
-      top: 156px;
-      right: 30px;
-      color: ${palette.text.light};
+    :hover {
+      cursor: default;
+      font-weight: 500;
       border: 0;
-      background-color: ${palette.opacity};
-      :hover {
-        color: #469bf8;
-        cursor: pointer;
-      }
-    }
-    .dot_wrap {
-      margin-bottom: 40px;
-      ${defaultFlexCenter}
-      .dot {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0;
-        border-radius: 100px;
-        background-color: ${palette.gray.bright};
-      }
-      .dot_active {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0;
-        border-radius: 100px;
-        background-color: ${palette.main.default};
-      }
-      .hyphen {
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        margin: 0;
-        background-color: ${palette.gray.bright};
-      }
-      .hyphen_active {
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        margin: 0;
-        background-color: ${palette.main.default};
-      }
-    }
-    h4 {
-      display: inline-block;
-      width: 100%;
-      margin: 0;
-      margin-bottom: 20px;
-      text-align: start;
-      font-weight: ${fontWeight.regular};
-      font-size: ${fontSize.regular};
-    }
-    .call_list_container {
-      .call_list_btn {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        box-shadow: ${palette.shadow};
-        /* loding list */
-        button {
-          width: 100%;
-          padding: 10px;
-          color: ${palette.text.default};
-          background-color: ${palette.opacity};
-          border: 0;
-        }
-      }
-      /* reginum */
-      .call_list_btn:first-child {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        text-align: center;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        background-color: ${palette.gray.middle};
-        strong {
-          width: 100%;
-          ${defaultFlexCenter}
-          justify-content: space-between;
-          font-size: ${fontSize.micro};
-          font-weight: ${fontWeight.regular};
-          color: ${palette.text.default};
-        }
-      }
-      .list_btn {
-        button {
-          width: 280px;
-          padding: 10px;
-          border: 0;
-          strong {
-            width: 100%;
-            ${defaultFlexCenter}
-            justify-content: space-between;
-            font-size: ${fontSize.micro};
-            font-weight: ${fontWeight.regular};
-            color: ${palette.text.disabled};
-            .border_bottom {
-              display: inline-block;
-              width: 100%;
-              height: 1px;
-              background-color: ${palette.gray.middle};
-            }
-          }
-        }
-        .active_state {
-          width: 280px;
-          padding: 10px;
-          border: 1px solid ${palette.gray.middle};
-          background-color: ${palette.white};
-          display: flex;
-          justify-content: flex-start;
-        }
-        :hover .active_state {
-          /* background-color: #469BF8; */
-          cursor: pointer;
-          color: ${palette.main.default};
-        }
-        .active_state,
-        .border_none {
-          border-top: 0;
-        }
-        .busy_btn {
-          border: 1px solid ${palette.gray.middle};
-          border-top: 0;
-        }
-        .selected {
-          width: 280px;
-          padding: 10px;
-          border: 1px solid ${palette.gray.middle};
-          border-top: 0;
-          background-color: ${palette.white};
-          display: flex;
-          justify-content: space-between;
-          color: ${palette.main.default};
-          font-weight: ${fontWeight.semiBold};
-          :hover {
-            cursor: pointer;
-          }
-        }
-      }
-      .list_btn:last-child {
-        button {
-          border-top: 0;
-          border-bottom-right-radius: 5px;
-          border-bottom-left-radius: 5px;
-        }
-      }
     }
   }
-  @media screen and (max-width: 579px) and (min-width: 230px) {
-    width: 100%;
-    .call_form {
-      width: 100%;
-      padding: 30px;
-      h4 {
-        font-size: 1.1rem;
-      }
-      .call_list_container {
-        .call_list_btn {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          box-shadow: ${palette.shadow};
-          /* loding list */
-          button {
-            width: 100%;
-            padding: 10px;
-            color: ${palette.text.default};
-            background-color: ${palette.opacity};
-            border: 0;
-          }
-        }
-        /* reginum */
-        .call_list_btn:first-child {
-          display: block;
-          width: 100%;
-          padding: 10px;
-          text-align: center;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-          background-color: ${palette.gray.middle};
-          strong {
-            width: 100%;
-            ${defaultFlexCenter}
-            justify-content: space-between;
-            font-size: ${fontSize.micro};
-            font-weight: ${fontWeight.regular};
-            color: ${palette.text.default};
-          }
-        }
-        .list_btn {
-          /* border: 1px solid red; */
-          button {
-            width: 100%;
-          }
-          .active_state {
-            width: 100%;
-          }
-          .selected {
-            width: 100%;
-          }
-        }
-      }
-    }
-  }
-`;
-
-export const StyledAudioCall = styled.div`
-  padding-top: 40px;
-  padding-bottom: 40px;
-  section {
-    width: 100%;
-    padding: 0 3%;
-    ${defaultFlexCenter}
-    justify-content: space-between;
-  }
-  @media screen and (max-width: 579px) and (min-width: 230px) {
-    width: 100%;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    section {
-      width: 100%;
-      padding: 0 3%;
-      ${defaultFlexCenter}
-      justify-content: space-between;
-    }
+  &.active {
+    color: #222;
+    font-weight: 500;
+    border: 1px solid ${palette.main.disabled};
+    background-color: #fff;
   }
 `;
 
 export const StyledAudioCallForm = styled.div`
-  width: 360px;
-  height: 530px;
-  margin: 0 auto;
-  padding: 40px;
-  border-radius: 15px;
+  width: 100%;
+  height: 100vh;
   box-shadow: ${palette.shadow};
-  position: relative;
-  overflow: hidden;
-  .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10;
-  }
+  background-color: rgba(0, 0, 0, 0.9);
   h3 {
-    text-align: center;
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    ${defaultFlexCenter}
     margin-bottom: 20px;
     font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: ${fontWeight.medium};
-  }
-  .dot_wrap {
-    margin-bottom: 30px;
-    ${defaultFlexCenter}
-    .dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin: 0;
-      border-radius: 100px;
-      background-color: ${palette.gray.bright};
-    }
-    .dot_active {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin: 0;
-      border-radius: 100px;
-      background-color: ${palette.main.default};
-    }
-    .hyphen {
-      display: inline-block;
-      width: 20px;
-      height: 2px;
-      margin: 0;
-      background-color: ${palette.gray.bright};
-    }
-    .hyphen_active {
-      display: inline-block;
-      width: 20px;
-      height: 2px;
-      margin: 0;
-      background-color: ${palette.main.default};
-    }
-  }
-  h4 {
-    display: inline-block;
-    width: 100%;
-    margin: 0;
-    margin-bottom: 20px;
-    text-align: start;
-    font-weight: ${fontWeight.regular};
-    font-size: ${fontSize.regular};
+    background-color: rgba(0, 0, 0, 0.4);
   }
   .name,
   .calling {
     text-align: center;
-    font-size: ${fontSize.micro};
-    color: ${palette.text.light};
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
   }
   .name {
-    font-size: 1.25rem;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
     font-weight: ${fontWeight.medium};
-    color: ${palette.black};
   }
   .calling_spinner {
     position: absolute;
-    top: 220px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+  }
+  .spinner {
+    opacity: 0.2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   p {
     padding-left: 14px;
@@ -676,98 +428,134 @@ export const StyledAudioCallForm = styled.div`
     width: 100%;
     ${defaultFlexCenter}
     justify-content: space-around;
-    button {
-      background-color: ${palette.opacity};
-      border: 0;
+    .roomIcon {
+      width: 50px;
+      height: 50px;
+      ${defaultFlexCenter}
+      background-color: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px 0px;
+      border-radius: 50%;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 24px;
       :hover {
         cursor: pointer;
+        color: mediumpurple;
       }
     }
   }
+  .menu_wrap {
+    height: 40px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    ${defaultFlexCenter}
+    justify-content: flex-end;
+    .roomIcon {
+      margin-bottom: 10px;
+      background-color: rgba(255, 255, 255, 0);
+      border: 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 24px;
+      :hover {
+        cursor: pointer;
+        color: mediumpurple;
+      }
+    }
+  }
+  .select_wrap {
+    width: 200px;
+    position: absolute;
+    top: 46px;
+    right: -90px;
+    text-align: center;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 200;
+    .top {
+      width: 100%;
+      padding: 0 5%;
+      ${defaultFlexCenter}
+      justify-content: space-between;
+      border-bottom: 1px solid lightgray;
+      h3 {
+        height: 38px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: #333;
+        ${defaultFlexCenter}
+        background-color: #fff;
+      }
+      button {
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+    }
+    .center {
+      border-radius: 10px;
+      button {
+        height: 38px;
+        font-size: 13px;
+        color: #666;
+        border: 0;
+        background-color: #fff;
+        border-bottom: 1px solid lightgray;
+        :last-child {
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+      }
+    }
+  }
+  .name {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: ${fontWeight.medium};
+    span {
+      position: static;
+      font-size: 16px;
+      color: #666;
+      :last-child {
+        position: absolute;
+        top: 0;
+        right: -80px;
+        color: red;
+      }
+    }
+  }
+
   @media screen and (max-width: 579px) and (min-width: 230px) {
     width: 100%;
-    height: 530px;
-    margin: 0 auto;
-    padding: 40px;
-    border-radius: 15px;
-    /* background-color: ${palette.gray.boxColor}; */
+    height: 100vh;
     box-shadow: ${palette.shadow};
-    position: relative;
-    overflow: hidden;
-    .background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* background-color: rgba(0, 0, 0, 0.6); */
-      z-index: 10;
-    }
+    background-color: rgba(0, 0, 0, 0.9);
     h3 {
-      margin-bottom: 20px;
-      font-size: 1.5rem;
-      font-weight: ${fontWeight.medium};
-    }
-    .dot_wrap {
-      margin-bottom: 30px;
-      ${defaultFlexCenter}
-      .dot {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0;
-        border-radius: 100px;
-        background-color: ${palette.gray.bright};
-      }
-      .dot_active {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0;
-        border-radius: 100px;
-        background-color: ${palette.main.default};
-      }
-      .hyphen {
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        margin: 0;
-        background-color: ${palette.gray.bright};
-      }
-      .hyphen_active {
-        display: inline-block;
-        width: 20px;
-        height: 2px;
-        margin: 0;
-        background-color: ${palette.main.default};
-      }
-    }
-    h4 {
-      display: inline-block;
       width: 100%;
+      height: 60px;
       margin: 0;
+      ${defaultFlexCenter}
       margin-bottom: 20px;
-      text-align: start;
-      font-weight: ${fontWeight.regular};
-      font-size: ${fontSize.regular};
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: ${fontWeight.medium};
+      background-color: rgba(0, 0, 0, 0.4);
     }
     .name,
     .calling {
       text-align: center;
-      font-size: ${fontSize.micro};
-      color: ${palette.text.light};
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
     }
-    .name {
-      font-size: 1.25rem;
-      font-weight: ${fontWeight.medium};
-      color: ${palette.black};
-    }
+
     .calling_spinner {
       position: absolute;
-      top: 220px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
     }
+
     p {
       padding-left: 14px;
       position: relative;
@@ -781,6 +569,22 @@ export const StyledAudioCallForm = styled.div`
         color: ${palette.main.default};
       }
     }
+    .name {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: ${fontWeight.medium};
+      span {
+        position: static;
+        font-size: 16px;
+        color: #666;
+        :last-child {
+          position: absolute;
+          top: 0;
+          right: -80px;
+          color: red;
+        }
+      }
+    }
     .btn_wrap {
       position: absolute;
       bottom: 50px;
@@ -789,11 +593,84 @@ export const StyledAudioCallForm = styled.div`
       width: 100%;
       ${defaultFlexCenter}
       justify-content: space-around;
-      button {
-        background-color: ${palette.opacity};
-        border: 0;
+      .roomIcon {
+        width: 50px;
+        height: 50px;
+        ${defaultFlexCenter}
+        background-color: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 8px 0px;
+        border-radius: 50%;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 24px;
         :hover {
           cursor: pointer;
+          color: mediumpurple;
+        }
+      }
+    }
+    .menu_wrap {
+      height: 40px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      ${defaultFlexCenter}
+      justify-content: flex-end;
+      .roomIcon {
+        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0);
+        border: 0;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 24px;
+        :hover {
+          cursor: pointer;
+          color: mediumpurple;
+        }
+      }
+    }
+    .select_wrap {
+      width: 200px;
+      position: absolute;
+      top: 46px;
+      right: -90px;
+      text-align: center;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border-radius: 10px;
+      z-index: 200;
+      .top {
+        width: 100%;
+        padding: 0 5%;
+        ${defaultFlexCenter}
+        justify-content: space-between;
+        border-bottom: 1px solid lightgray;
+        h3 {
+          height: 38px;
+          margin: 0;
+          font-size: 14px;
+          font-weight: 400;
+          color: #333;
+          ${defaultFlexCenter}
+          background-color: #fff;
+        }
+        button {
+          border: 0;
+          background-color: rgba(0, 0, 0, 0);
+        }
+      }
+      .center {
+        border-radius: 10px;
+        button {
+          height: 38px;
+          font-size: 13px;
+          color: #666;
+          border: 0;
+          background-color: #fff;
+          border-bottom: 1px solid lightgray;
+          :last-child {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+          }
         }
       }
     }
