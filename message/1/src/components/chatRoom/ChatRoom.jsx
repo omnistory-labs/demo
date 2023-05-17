@@ -2,10 +2,10 @@ import MessageList from "./MessageList";
 import MessageForm from "./MessageForm";
 import { useState } from "react";
 import styled from "styled-components";
-function ChatRoom({ nickname, omnitalk }) {
+function ChatRoom({ omnitalk }) {
   const [userList, setUserList] = useState([]);
-  const addUserNickname = async nickname => {
-    setUserList(prevUserList => [...prevUserList, nickname]);
+  const addUserNickname = async (nickname) => {
+    setUserList((prevUserList) => [...prevUserList, nickname]);
   };
   return (
     <>

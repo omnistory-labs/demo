@@ -5,6 +5,7 @@ $(document).ready(() => {
     "SERVICE ID를 입력하세요",
     "SERVICE KEY를 입력하세요"
   );
+
   const audioInputSelect = document.querySelector("select#audioSource");
   const videoSelect = document.querySelector("select#videoSource");
   const selectors = [audioInputSelect, videoSelect];
@@ -80,6 +81,7 @@ $(document).ready(() => {
   };
 
   $("#regRoomBtn").click(async () => {
+    console.log("clicked");
     regiRoomFunc();
   });
 
