@@ -1,7 +1,7 @@
 import moment from "moment";
 import Omnitalk from "omnitalk-npm-sdk";
 import React, { useEffect, useRef, useState } from "react";
-import ChatRoom from "./chatRoom/ChatRoom";
+import ChatRoom from "./components/chatRoom/ChatRoom";
 import { FiUsers } from "react-icons/fi";
 import { RiTimerLine } from "react-icons/ri";
 import { VscChromeClose } from "react-icons/vsc";
@@ -12,7 +12,7 @@ import {
   fontSize,
   fontWeight,
   palette,
-} from "../style";
+} from "./style";
 
 // SERVICE ID for WEB
 // SERVICE ID, SERVICE KEY for APP
@@ -28,7 +28,6 @@ function Chat() {
   const [userId, setUserID] = useState("");
   const [roomList, setRoomList] = useState([]);
   const [password, setPassword] = useState(roomList.map(() => "")); // roomList.secret => 사용자 입력
-  // const [password, setPassword] = useState(""); // roomList.secret => 사용자 입력
   const pwValue = useRef();
 
   const [publishToggle, setPublishToggle] = useState(false);
